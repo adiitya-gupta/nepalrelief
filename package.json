@@ -1,0 +1,21 @@
+{
+  "name": "opsiys-nepal-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nanoid": "^3.3.18",
+    "razorpay": "^2.9.8",
+    "serverless-http": "^4.0.0"
+  }
+}

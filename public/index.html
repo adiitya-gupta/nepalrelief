@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opsiys for Nepal | Help Families Recover</title>
+<meta name="description" content="Support the Opsiys Nepal Relief Drive. Even a small contribution can help provide meaningful support to communities affected by devastating floods.">
+<meta property="og:title" content="Opsiys for Nepal | Help Families Recover">
+<meta property="og:description" content="Support the Opsiys Nepal Relief Drive. Even a small contribution can help provide meaningful support to communities affected by devastating floods.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+  :root{
+    --ink:#16151a; --ink-soft:#384452; --paper:#fff; --white:#ffffff;
+    --stone:#75808c; --stone-light:#b8c0c7; --hairline:#e4e6e8;
+    --relief:#e52f32; --relief-deep:#b82026; --focus:#1c6cff; --radius:3px; --max:1280px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;} }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',system-ui,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,.display{ font-family:Georgia,'Times New Roman',serif; font-weight:400; letter-spacing:-0.045em; margin:0; color:var(--ink); }
+  a{color:inherit;} button{font-family:inherit;}
+  :focus-visible{outline:3px solid var(--focus); outline-offset:2px;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+  .mono-num{font-family:'Inter',monospace; font-variant-numeric:tabular-nums; font-feature-settings:"tnum";}
+
+  .topbar{position:sticky; top:0; z-index:40; background:#fff; border-bottom:1px solid #e5e5e5;}
+  .topbar .wrap{display:flex; align-items:center; gap:32px; padding-top:18px; padding-bottom:18px;}
+  .brand{font-family:'Manrope',sans-serif; font-weight:800; font-size:22px; letter-spacing:-0.04em; white-space:nowrap;}
+  .brand span{font-size:11px; font-weight:600; letter-spacing:0.22em; color:#777; margin-left:6px;}
+  .brand small{display:inline; margin-left:8px; font-weight:600; font-size:9px; color:#999; letter-spacing:0.04em;}
+  .topnav{display:flex; align-items:center; gap:34px; margin-left:auto;}
+  .topnav a{font-family:'Manrope',sans-serif; font-size:16px; font-weight:600; color:#555; text-decoration:none;}
+  .topnav a:hover{color:var(--relief);}
+  .raised-pill{border:1px solid #d7d7d7; border-radius:30px; padding:10px 18px; font-size:13px; color:#666; white-space:nowrap;}
+  .topbar .btn-primary{border-radius:30px; padding:13px 25px; font-size:16px;}
+  .btn{ display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; font-weight:700; font-size:15px; padding:12px 22px; border-radius:var(--radius); transition:transform 120ms ease, background 120ms ease; }
+  .btn:active{transform:scale(0.97);} .btn:disabled{opacity:0.6; cursor:not-allowed;}
+  .btn-primary{background:var(--relief); color:#fff;} .btn-primary:hover{background:var(--relief-deep);}
+  .btn-ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink); padding:10.5px 20px;}
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+  .btn-sm{padding:9px 16px; font-size:13.5px;}
+
+  .hero{position:relative; min-height:470px; display:flex; align-items:center; padding:72px 0 58px; border-bottom:1px solid var(--hairline); background-color:#30362f; background-image:linear-gradient(90deg, rgba(12,16,18,0.88) 0%, rgba(12,16,18,0.68) 46%, rgba(12,16,18,0.25) 100%), url('/images/WhatsApp%20Image%202026-09-05%20at%2013.36.26.jpeg'); background-size:100% 100%, 78% auto; background-position:center, right center; background-repeat:no-repeat; color:#fff;}
+  .hero-grid{display:block; width:100vw; max-width:none; margin-left:0 !important; margin-right:0; padding-left:40px !important; padding-right:24px;}
+  .hero-copy{max-width:650px; margin-left:0 !important; text-align:left;}
+  .eyebrow-flag{font-size:14px; color:#f7d8dc; font-weight:700; margin-bottom:18px; letter-spacing:0.08em; text-transform:uppercase;}
+  .hero h1{font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:clamp(48px,7vw,82px); line-height:0.98; letter-spacing:-0.055em; color:#fff; max-width:760px; text-transform:capitalize;}
+  .hero-sub{margin-top:34px; font-size:20px; color:rgba(255,255,255,0.92); max-width:650px;}
+  .hero-cta{margin-top:38px; display:flex; gap:14px; flex-wrap:wrap;}
+  .hero .btn-primary{border-radius:30px; padding:17px 30px; font-size:18px;}
+  .hero .btn-ghost{border-color:rgba(255,255,255,0.75); color:#fff; border-radius:30px; padding:15px 28px; font-size:18px; background:rgba(0,0,0,0.12);}
+  .hero .btn-ghost:hover{background:#fff; color:var(--ink);}
+  .trust-line{margin-top:40px; font-size:16px; color:rgba(255,255,255,0.88); display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+  .trust-line .dot{width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.7); display:inline-block;}
+  .marquee{overflow:hidden; border-bottom:1px solid var(--hairline); white-space:nowrap; background:#fff;}
+  .marquee-track{display:inline-flex; align-items:center; gap:44px; min-width:max-content; padding:14px 0; animation:marquee 28s linear infinite;}
+  .marquee span{font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:24px; color:#bdc2c4;}
+  .marquee i{font-style:normal; color:#ef7777; font-size:24px;}
+  @keyframes marquee{to{transform:translateX(-50%);}}
+  .impact-layout{display:grid; grid-template-columns:1.2fr 1fr; gap:26px; align-items:center;}
+  .impact-visual{position:relative; min-height:420px; display:flex; align-items:flex-end; justify-content:center;}
+  .impact-photo.main{width:100%; max-width:560px; height:440px; border-radius:26px; overflow:hidden; border:1px solid rgba(22,21,26,0.10); box-shadow:0 28px 60px rgba(22,21,26,0.12); position:relative; z-index:1;}
+  .impact-photo.main img{width:100%; height:100%; object-fit:cover; display:block;}
+  .field-stories{display:none;}
+  .story-intro{display:flex; justify-content:space-between; gap:32px; align-items:end; margin-bottom:38px;}
+  .story-intro .body-lg{margin:0; max-width:42ch;}
+  .story-row{display:grid; grid-template-columns:1.1fr 0.9fr; min-height:420px; margin-top:22px; background:var(--white); overflow:hidden; border:1px solid var(--hairline);}
+  .story-row.reverse{grid-template-columns:0.9fr 1.1fr;}
+  .story-row.reverse .story-image{order:2;}
+  .story-image{min-height:420px;}
+  .story-image img{width:100%; height:100%; object-fit:cover; display:block;}
+  .story-copy{padding:42px; display:flex; flex-direction:column; justify-content:center;}
+  .story-copy .kicker{font-size:13px; color:var(--relief); text-transform:uppercase; letter-spacing:0.08em; font-weight:700; margin-bottom:14px;}
+  .story-copy h3{font-size:clamp(25px,3vw,36px); line-height:1.12; margin-bottom:14px;}
+  .story-copy p{margin:0; color:var(--ink-soft); font-size:16px; max-width:40ch;}
+  .story-row.wide{grid-template-columns:1fr 1fr;}
+  @media (max-width:760px){.story-intro{display:block;} .story-intro .body-lg{margin-top:16px;} .story-row,.story-row.reverse,.story-row.wide{grid-template-columns:1fr;} .story-row.reverse .story-image{order:0;} .story-image{min-height:280px;} .story-copy{padding:28px;}}
+  .feature-grid{display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; margin-top:30px;}
+  .feature-box{background:var(--white); border:1px solid var(--hairline); border-radius:18px; padding:24px; box-shadow:0 12px 26px rgba(22,21,26,0.05); overflow:hidden;}
+  .feature-box img{width:calc(100% + 48px); height:190px; margin:-24px -24px 24px; object-fit:cover; display:block;}
+  .feature-box .icon{font-size:28px; margin-bottom:12px;}
+  .feature-box h3{font-size:22px; margin-bottom:10px;}
+  .feature-box p{margin:0; color:var(--ink-soft); font-size:15px;}
+  @media (max-width:860px){ .topbar .wrap{gap:14px;} .topnav{gap:14px;} .topnav a{display:none;} .hero{min-height:440px; padding:58px 0 48px; background-size:100% 100%, cover; background-position:center, center;} .hero-grid{padding-left:22px !important;} .hero h1{font-size:clamp(46px,12vw,68px);} .feature-grid{grid-template-columns:1fr;} .impact-layout{grid-template-columns:1fr;} .impact-photo.main{height:360px;} }
+
+  section{padding:112px 0;} .section-tight{padding:112px 0;}
+  .rule{border:none; border-top:1px solid var(--hairline); margin:0;}
+  .lede{font-size:12px; text-transform:uppercase; letter-spacing:0.24em; color:#72808d; font-weight:600; margin-bottom:24px;}
+  .h2{font-size:clamp(42px,5vw,70px); line-height:0.98; max-width:12ch;}
+  .body-lg{font-size:17px; color:var(--ink-soft); max-width:58ch; margin-top:16px;}
+
+  .statement{background:#fff; color:var(--ink);}
+  .statement .wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:92px; align-items:center;}
+  .statement h2{color:var(--ink); font-size:clamp(48px,6vw,76px); max-width:8ch;}
+  .statement p{color:var(--ink-soft); font-size:18px; max-width:54ch; margin-top:28px;}
+  .statement p::after{content:'They are trying to recover from them right now.'; display:block; margin-top:30px; font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:22px; color:var(--ink);}
+  .statement .wrap::after{content:''; display:block; grid-column:2; grid-row:1; width:100%; height:520px; background-image:url('/images/WhatsApp%20Image%202026-09-05%20at%2013.36.26%20(2).jpeg'); background-size:cover; background-position:center; box-shadow:70px 55px 0 -22px #fff, 70px 55px 0 -21px var(--hairline);}
+
+  .impact-line .big{font-size:clamp(48px,7vw,90px); font-weight:400; font-family:Georgia,'Times New Roman',serif; line-height:0.98; max-width:14ch;}
+  .impact-line .big::first-line{color:var(--ink);}
+  .impact-line .small{margin-top:18px; font-size:19px; color:var(--ink-soft); max-width:40ch;}
+  .amount-row{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:40px;}
+  @media (max-width:700px){.amount-row{grid-template-columns:repeat(2,1fr);}}
+  .amt-card{ border:1px solid var(--hairline); background:var(--white); padding:30px 34px; text-align:left; cursor:pointer; border-radius:var(--radius); transition:border-color 120ms ease, background 120ms ease; }
+  .amt-card .num{font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:42px;}
+  .amt-card .lbl{font-size:11px; color:var(--stone); margin-top:12px; text-transform:uppercase; letter-spacing:0.18em;}
+  .amt-card:hover{border-color:var(--ink);}
+  .amt-card.selected{border-color:var(--relief); background:#fbeeef;}
+  .amt-card.selected .num{color:var(--relief-deep);}
+
+  .donate-block{background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius); padding:36px; scroll-margin-top:90px;}
+  .donate-layout{display:grid; grid-template-columns:0.95fr 1.05fr; gap:80px; align-items:start;}
+  .donate-intro{padding-top:30px;}
+  .donate-intro .h2{font-size:clamp(48px,6vw,76px);}
+  .donate-points{list-style:none; padding:0; margin:42px 0 0; color:var(--ink-soft);}
+  .donate-points li{margin-top:14px;}
+  .donate-points li::before{content:'•'; color:var(--relief); font-size:24px; vertical-align:-2px; margin-right:12px;}
+  @media (max-width:700px){.donate-block{padding:24px;}}
+  .donate-block h3{font-size:23px;}
+  .qty-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:22px;}
+  @media (max-width:520px){.qty-grid{grid-template-columns:repeat(2,1fr);}}
+  .qty-card{ border:1.5px solid var(--hairline); background:var(--paper); padding:16px 10px; text-align:center; cursor:pointer; font-weight:700; border-radius:var(--radius); font-family:'Manrope',sans-serif; font-size:16px; transition:border-color 120ms ease, background 120ms ease; }
+  .qty-card:hover{border-color:var(--ink);}
+  .qty-card.selected{border-color:var(--relief); background:var(--relief); color:#fff;}
+  .custom-amt{margin-top:16px;}
+  .custom-amt label{font-size:13px; color:var(--stone); display:block; margin-bottom:6px;}
+  .custom-amt .field{ display:flex; align-items:center; border:1.5px solid var(--hairline); border-radius:var(--radius); background:var(--paper); }
+  .custom-amt .field span{padding:0 14px; color:var(--stone); font-weight:600;}
+  .custom-amt input{ flex:1; border:none; background:transparent; padding:14px 12px 14px 0; font-size:17px; font-weight:600; color:var(--ink); }
+  .custom-amt input:focus{outline:none;}
+  .custom-amt .field:focus-within{border-color:var(--ink);}
+
+  .donor-fields{margin-top:26px; display:grid; gap:14px;}
+  .donor-fields .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:520px){.donor-fields .row2{grid-template-columns:1fr;}}
+  .fld label{font-size:13px; color:var(--stone); display:block; margin-bottom:6px;}
+  .fld input[type=text], .fld input[type=email], .fld input[type=tel]{ width:100%; border:1.5px solid var(--hairline); background:var(--paper); border-radius:var(--radius); padding:12px 14px; font-size:15px; color:var(--ink); font-family:inherit; }
+  .fld input:focus{outline:none; border-color:var(--ink);}
+  .checkline{display:flex; align-items:center; gap:9px; font-size:14px; color:var(--ink-soft);}
+  .checkline input{width:16px; height:16px;}
+
+  .continue-btn{margin-top:26px; width:100%; text-align:center; padding:17px; font-size:16.5px; justify-content:center;}
+  .selected-summary{margin-top:14px; font-size:14px; color:var(--stone); text-align:center;}
+  .gateway-note{margin-top:16px; font-size:12.5px; color:var(--stone-light); text-align:center; line-height:1.5;}
+  .error-note{margin-top:12px; font-size:13.5px; color:var(--relief-deep); text-align:center; display:none;}
+  .error-note.show{display:block;}
+
+  .success-panel{display:none; text-align:center; padding:20px 0 4px;}
+  .success-panel.show{display:block;}
+  .success-panel .mark{font-size:38px;}
+  .success-panel h3{margin-top:10px;}
+  .ref-id{margin-top:14px; display:inline-block; background:var(--paper); border:1px dashed var(--stone-light); padding:10px 16px; border-radius:2px; font-size:14px;}
+
+  #where-it-goes{background:#111416; color:#fff;}
+  #where-it-goes h2{color:#fff; max-width:16ch;}
+  #where-it-goes .body-lg,#where-it-goes .ledger-note,#where-it-goes .ledger-row .k{color:#aeb6bd;}
+  #where-it-goes .lede{color:#9aa7b0;}
+  .dash{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#34393d; border:1px solid #34393d; margin-top:48px;}
+  @media (max-width:760px){.dash{grid-template-columns:repeat(2,1fr);}}
+  .dash-cell{background:#111416; padding:30px 26px;}
+  .dash-cell .lbl{font-size:12.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--stone);}
+  .dash-cell .val{font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:38px; margin-top:8px; color:#fff;}
+  .progress-track{margin-top:24px; height:8px; background:#303538; border-radius:6px; overflow:hidden;}
+  .progress-fill{height:100%; background:var(--relief); width:0%; border-radius:6px; transition:width 900ms ease;}
+  .progress-caption{margin-top:10px; font-size:13px; color:var(--stone); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;}
+
+  .ledger{margin-top:54px; border-top:1px solid #34393d;}
+  .ledger-row{display:flex; justify-content:space-between; padding:22px 0; border-bottom:1px solid #34393d; font-size:15px;}
+  .ledger-row .k{color:var(--ink-soft);}
+  .ledger-row .v{font-weight:700; font-family:'Manrope',sans-serif;}
+  .ledger-note{font-size:13px; color:var(--stone); margin-top:14px;}
+
+  .commit{background:var(--white); border:1px solid var(--hairline); border-radius:var(--radius); padding:40px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:52px; align-items:center;}
+  .commit-photo{height:420px; overflow:hidden;}
+  .commit-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  @media (max-width:760px){.donate-layout{grid-template-columns:1fr; gap:22px;} .donate-intro{padding-top:0;} .commit{grid-template-columns:1fr; padding:28px;} .commit-photo{height:300px;}}
+  .commit-amt{background:var(--paper); border:1px solid var(--hairline); padding:24px; text-align:center; border-radius:2px;}
+  .commit-amt .lbl{font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color:var(--stone);}
+  .commit-amt .val{font-family:'Manrope',sans-serif; font-weight:800; font-size:30px; margin-top:8px; color:var(--relief-deep);}
+
+  .supporters-count{font-size:clamp(30px,5vw,44px); font-family:'Manrope',sans-serif; font-weight:800;}
+  .recent-list{margin-top:28px; display:grid; gap:1px; background:var(--hairline); border:1px solid var(--hairline);}
+  .recent-row{background:var(--white); display:flex; justify-content:space-between; padding:14px 18px; font-size:14.5px;}
+  .recent-row .amt{font-weight:700; font-family:'Manrope',sans-serif;}
+
+  .share-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:26px;}
+  .share-btn{ display:inline-flex; align-items:center; gap:8px; border:1.5px solid var(--hairline); background:var(--white); padding:11px 18px; border-radius:2px; font-size:14px; font-weight:600; cursor:pointer; }
+  .share-btn:hover{border-color:var(--ink);}
+
+  .faq-item{border-bottom:1px solid var(--hairline);}
+  .faq-q{ width:100%; text-align:left; background:none; border:none; cursor:pointer; padding:20px 0; display:flex; justify-content:space-between; align-items:center; font-size:16.5px; font-weight:700; font-family:'Manrope',sans-serif; color:var(--ink); }
+  .faq-q .chev{transition:transform 160ms ease; color:var(--stone); font-size:18px;}
+  .faq-item.open .chev{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height 220ms ease;}
+  .faq-a p{padding:0 0 20px; color:var(--ink-soft); font-size:15px; max-width:64ch;}
+
+  .final{background:var(--ink); color:var(--paper); text-align:center;}
+  .final h2{color:#fff; font-size:clamp(28px,4.6vw,46px); max-width:18ch; margin:0 auto;}
+  .final p{color:#cfccc3; margin-top:18px; font-size:17px;}
+  .final .btn-primary{margin-top:30px;}
+  .final .foot-line{margin-top:22px; font-size:14px; color:var(--stone-light);}
+
+  footer{padding:56px 0 120px; font-size:13.5px; color:var(--stone);}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:32px;}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr; gap:24px;}}
+  .foot-grid h4{font-family:'Manrope',sans-serif; color:var(--ink); font-size:13px; margin-bottom:12px; font-weight:700;}
+  .foot-grid a{display:block; color:var(--stone); text-decoration:none; margin-bottom:8px;}
+  .foot-grid a:hover{color:var(--ink);}
+  .foot-legal{margin-top:36px; padding-top:24px; border-top:1px solid var(--hairline); font-size:12.5px; line-height:1.6;}
+
+  .sticky-bar{ position:fixed; left:0; right:0; bottom:0; z-index:50; background:var(--ink); padding:12px 16px; display:none; align-items:center; justify-content:center; transform:translateY(100%); transition:transform 220ms ease; box-shadow:0 -6px 20px rgba(0,0,0,0.15); }
+  .sticky-bar.show{transform:translateY(0);}
+  .sticky-bar a{width:100%; max-width:420px; text-align:center; justify-content:center;}
+  @media (max-width:760px){.sticky-bar{display:flex;}}
+
+  .fade-in{opacity:0; transform:translateY(14px); transition:opacity 500ms ease, transform 500ms ease;}
+  .fade-in.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">OPSIYS <span>FOR NEPAL</span><small>NP</small></div>
+    <nav class="topnav" aria-label="Primary navigation">
+      <a href="#story">Story</a>
+      <a href="#glanceAmounts">₹100</a>
+      <a href="#where-it-goes">Transparency</a>
+      <a href="#faqList">FAQ</a>
+      <span class="raised-pill">₹250 raised</span>
+      <a href="#donate" class="btn btn-primary">♥&nbsp; Donate</a>
+    </nav>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow-flag">Opsiys for Nepal 🇳🇵</div>
+      <h1>They Lost Everything. You Can Give Them Something To Hold On To.</h1>
+      <p class="hero-sub">Thousands of people are facing the aftermath of devastating floods. Your contribution — whether ₹100, ₹500, or whatever you can afford — can help support relief and recovery.</p>
+      <div class="hero-cta">
+        <a href="#donate" class="btn btn-primary">♥&nbsp; DONATE NOW</a>
+        <a href="#story" class="btn btn-ghost">LEARN MORE&nbsp; ↓</a>
+      </div>
+      <div class="trust-line">
+        <span>Full transparency</span><span class="dot"></span>
+        <span>Verified relief channel</span><span class="dot"></span>
+        <span>Contribution tracking</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-label="Campaign message">
+  <div class="marquee-track">
+    <span>Small Acts, Real Relief</span><i>✦</i><span>Stand With Nepal</span><i>✦</i><span>Opsiys for Nepal</span><i>✦</i><span>Every Rupee Counts</span><i>✦</i><span>Small Acts, Real Relief</span><i>✦</i><span>Stand With Nepal</span><i>✦</i><span>Opsiys for Nepal</span><i>✦</i><span>Every Rupee Counts</span><i>✦</i>
+  </div>
+</div>
+
+<section class="statement" id="story">
+  <div class="wrap fade-in">
+    <h2>Imagine losing your home overnight.</h2>
+    <p>Your home. Your belongings. Your documents. The things you spent years building. For families affected by the floods, these aren't hypothetical losses — they are trying to recover from them right now.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="lede">How we support</div>
+    <h2 class="h2">A practical, organized relief response</h2>
+    <div class="feature-grid">
+      <div class="feature-box">
+        <img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.25.jpeg" alt="Child in a flood-affected area">
+        <div class="icon">🚑</div>
+        <h3>Emergency aid</h3>
+        <p>Fast support for families in crisis with essentials, shelter needs, and immediate relief measures.</p>
+      </div>
+      <div class="feature-box">
+        <img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.26%20(1).jpeg" alt="Rescue workers carrying a survivor to safety">
+        <div class="icon">🏠</div>
+        <h3>Recovery support</h3>
+        <p>Helping communities rebuild with basic stability, safe spaces, and practical assistance over time.</p>
+      </div>
+      <div class="feature-box">
+        <img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.27%20(2).jpeg" alt="Children gathered together during recovery">
+        <div class="icon">🤝</div>
+        <h3>Transparent giving</h3>
+        <p>Every contribution is tracked and reported so donors can understand what support is reaching the ground.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="field-stories">
+  <div class="wrap">
+    <div class="story-intro">
+      <div>
+        <div class="lede">On the ground</div>
+        <h2 class="h2">Relief is people helping people.</h2>
+      </div>
+      <p class="body-lg">The response is not one single moment. It is made up of rescue, care, safe spaces, and the steady work of rebuilding everyday life.</p>
+    </div>
+
+    <article class="story-row">
+      <div class="story-image"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.25.jpeg" alt="A child standing in a flood-affected area"></div>
+      <div class="story-copy">
+        <div class="kicker">Immediate care</div>
+        <h3>Families need support before recovery can begin.</h3>
+        <p>Food, basic supplies, and human connection help families get through the first difficult days after a disaster.</p>
+      </div>
+    </article>
+
+    <article class="story-row reverse">
+      <div class="story-image"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.26%20(1).jpeg" alt="Rescue workers carrying a survivor on a stretcher"></div>
+      <div class="story-copy">
+        <div class="kicker">Emergency response</div>
+        <h3>Every minute matters when help is needed.</h3>
+        <p>Local responders and relief teams work in difficult conditions to reach people, move them to safety, and deliver essential aid.</p>
+      </div>
+    </article>
+
+    <article class="story-row wide">
+      <div class="story-image"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.26%20(2).jpeg" alt="Children standing together in a damaged area"></div>
+      <div class="story-copy">
+        <div class="kicker">Community strength</div>
+        <h3>Recovery is stronger when no one is left alone.</h3>
+        <p>Communities carry one another through uncertainty. Your contribution helps make that shared effort more secure and more sustainable.</p>
+      </div>
+    </article>
+
+    <article class="story-row reverse">
+      <div class="story-image"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.26.jpeg" alt="A young child comforted by family amid crisis"></div>
+      <div class="story-copy">
+        <div class="kicker">A safer tomorrow</div>
+        <h3>Children deserve space to feel safe again.</h3>
+        <p>Relief is also about protecting dignity, restoring routine, and giving children and families room to begin healing.</p>
+      </div>
+    </article>
+
+    <article class="story-row">
+      <div class="story-image"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.27%20(1).jpeg" alt="Flood response workers helping in muddy terrain"></div>
+      <div class="story-copy">
+        <div class="kicker">The work continues</div>
+        <h3>Rebuilding takes patience, effort, and practical help.</h3>
+        <p>Long after the first headlines fade, teams continue clearing damage, reaching households, and helping communities restore stability.</p>
+      </div>
+    </article>
+
+    <article class="story-row reverse">
+      <div class="story-image"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.27%20(2).jpeg" alt="Children gathered in a community setting during recovery"></div>
+      <div class="story-copy">
+        <div class="kicker">Shared hope</div>
+        <h3>Small acts become visible change together.</h3>
+        <p>Each contribution joins a wider network of people choosing to stand with Nepal and support a more hopeful recovery.</p>
+      </div>
+    </article>
+
+    <article class="story-row wide">
+      <div class="story-image"><img src="/images/Picsart_26-09-05_13-59-22-282.jpg.jpeg" alt="A child sitting outdoors after the floods"></div>
+      <div class="story-copy">
+        <div class="kicker">Why it matters</div>
+        <h3>Behind every number is a person waiting for help.</h3>
+        <p>Giving is a practical way to help families move from immediate uncertainty toward safety, dignity, and recovery.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap impact-layout fade-in">
+    <div class="impact-line">
+      <div class="big">₹100 may feel small to you.</div>
+      <p class="small">But when thousands of people contribute a little, small acts become meaningful help.</p>
+      <div class="amount-row" id="glanceAmounts" style="margin-top:28px;">
+        <div class="amt-card" data-amt="100"><div class="num">₹100</div><div class="lbl">A start</div></div>
+        <div class="amt-card" data-amt="500"><div class="num">₹500</div><div class="lbl">A meaningful gift</div></div>
+        <div class="amt-card" data-amt="1000"><div class="num">₹1,000</div><div class="lbl">A strong gift</div></div>
+        <div class="amt-card" data-amt="custom"><div class="num">Other</div><div class="lbl">Custom amount</div></div>
+      </div>
+    </div>
+    <div class="impact-visual">
+      <div class="impact-photo main"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.28.jpeg" alt="Flood-damaged homes and muddy terrain after heavy rainfall"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="donate">
+  <div class="wrap donate-layout">
+    <div class="donate-intro">
+      <div class="lede">03 — Your part</div>
+      <h2 class="h2" style="max-width:none;">I Want To Help Nepal.</h2>
+      <p class="body-lg">Pick an amount, add your name, and you are done. The entire process takes less than a minute, secured by Razorpay.</p>
+      <ul class="donate-points"><li>UPI, Cards, Net Banking &amp; Wallets</li><li>Instant verification &amp; reference ID</li><li>Downloadable donation receipt</li></ul>
+    </div>
+
+    <div class="donate-block" style="margin-top:30px;">
+      <div id="formView">
+        <h3>Choose an amount</h3>
+        <div class="qty-grid" id="qtyGrid">
+          <div class="qty-card" data-amt="100">₹100</div>
+          <div class="qty-card" data-amt="250">₹250</div>
+          <div class="qty-card" data-amt="500">₹500</div>
+          <div class="qty-card" data-amt="1000">₹1,000</div>
+          <div class="qty-card" data-amt="2500">₹2,500</div>
+          <div class="qty-card" data-amt="5000">₹5,000</div>
+        </div>
+        <div class="custom-amt">
+          <label for="customAmount">Or enter a custom amount (₹)</label>
+          <div class="field"><span>₹</span><input type="number" id="customAmount" min="1" placeholder="e.g. 750"></div>
+        </div>
+
+        <div class="donor-fields">
+          <div class="row2">
+            <div class="fld"><label for="donorName">Full name</label><input type="text" id="donorName" placeholder="Your name"></div>
+            <div class="fld"><label for="donorEmail">Email</label><input type="email" id="donorEmail" placeholder="you@email.com"></div>
+          </div>
+          <div class="fld"><label for="donorPhone">Phone (optional)</label><input type="tel" id="donorPhone" placeholder="+91"></div>
+          <label class="checkline"><input type="checkbox" id="anonCheck"> Donate anonymously</label>
+        </div>
+
+        <button class="btn btn-primary continue-btn" id="continueBtn">Continue to donate →</button>
+        <div class="selected-summary" id="selectedSummary">Select an amount to continue</div>
+        <div class="error-note" id="errorNote"></div>
+        <div class="gateway-note">Secure checkout is handled by Razorpay. We never see or store your card details. Payments are verified on our server before a donation is marked successful.</div>
+      </div>
+
+      <div class="success-panel" id="successPanel">
+        <div class="mark">🇳🇵❤️</div>
+        <h3>Thank you for standing with Nepal.</h3>
+        <p style="color:var(--ink-soft); margin-top:8px;">A receipt has been sent to your email where applicable.</p>
+        <div class="ref-id">Reference ID: <strong id="refId">—</strong></div>
+        <div style="margin-top:20px;"><button class="btn btn-ghost btn-sm" id="resetBtn">Make another contribution</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="where-it-goes">
+  <div class="wrap">
+    <div class="lede">Transparency</div>
+    <h2 class="h2">Where does the money go?</h2>
+    <p class="body-lg">Every contribution is tracked from the moment it's received. Here is exactly how funds raised through this campaign are handled.</p>
+
+    <div class="dash">
+      <div class="dash-cell"><div class="lbl">Campaign goal</div><div class="val mono-num" id="goalVal">₹—</div></div>
+      <div class="dash-cell"><div class="lbl">Raised so far</div><div class="val mono-num" id="raisedVal">₹0</div></div>
+      <div class="dash-cell"><div class="lbl">Supporters</div><div class="val mono-num" id="supportersVal">0</div></div>
+      <div class="dash-cell"><div class="lbl">Opsiys contribution</div><div class="val mono-num" id="opsiysVal">₹—</div></div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-caption"><span id="progressPct">0% of goal</span><span id="progressFraction">₹0 / ₹—</span></div>
+
+    <div class="ledger">
+      <div class="ledger-row"><span class="k">1. Donations received</span><span class="v" id="ledgerReceived">₹—</span></div>
+      <div class="ledger-row"><span class="k">2. Opsiys contribution</span><span class="v" id="ledgerOpsiys">₹—</span></div>
+      <div class="ledger-row"><span class="k">3. Transferred to verified relief fund</span><span class="v" id="ledgerTransferred">₹—</span></div>
+      <div class="ledger-row"><span class="k">4. Payment / admin charges (if any)</span><span class="v" id="ledgerCharges">₹—</span></div>
+      <div class="ledger-row"><span class="k">5. Balance held / pending transfer</span><span class="v" id="ledgerBalance">₹—</span></div>
+    </div>
+    <p class="ledger-note">These figures are read live from the campaign database. The name of the verified relief organization receiving transfers will be added here once confirmed.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="lede">Our commitment</div>
+    <div class="commit">
+      <div>
+        <h2 class="h2" style="max-width:none;">We're not just asking. We're contributing.</h2>
+        <p class="body-lg">Opsiys is contributing to this relief effort and inviting our community to stand with the people of Nepal. This campaign is about shared responsibility, not just a request for support.</p>
+      </div>
+      <div>
+        <div class="commit-photo"><img src="/images/WhatsApp%20Image%202026-09-05%20at%2013.36.27%20(2).jpeg" alt="Children gathered together during recovery"></div>
+        <div class="commit-amt">
+          <div class="lbl">Opsiys contribution</div>
+          <div class="val mono-num" id="commitVal">₹—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="lede">Together so far</div>
+    <div class="supporters-count mono-num" id="socialCount">0 supporters</div>
+    <div class="recent-list" id="recentList">
+      <div class="recent-row"><span>Recent contributions will appear here</span><span class="amt">—</span></div>
+    </div>
+    <p style="font-size:13px; color:var(--stone); margin-top:14px;">Donors choose whether their name is shown. No payment details are ever displayed.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="lede">Can't donate right now?</div>
+    <h2 class="h2">You can still help — by sharing.</h2>
+    <div class="share-row">
+      <button class="share-btn" onclick="shareTo('whatsapp')">Share on WhatsApp</button>
+      <button class="share-btn" onclick="shareTo('instagram')">Share on Instagram</button>
+      <button class="share-btn" onclick="shareTo('linkedin')">Share on LinkedIn</button>
+      <button class="share-btn" onclick="shareTo('copy')">Copy campaign link</button>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section>
+  <div class="wrap" style="max-width:760px;">
+    <div class="lede">Questions</div>
+    <h2 class="h2" style="max-width:none;">Frequently asked</h2>
+    <div style="margin-top:24px;" id="faqList">
+      <div class="faq-item"><button class="faq-q">Where will my contribution go?<span class="chev">+</span></button><div class="faq-a"><p>Contributions go toward flood relief and recovery efforts through a verified relief channel. The specific partner organization will be named here once confirmed.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Who is receiving the funds?<span class="chev">+</span></button><div class="faq-a"><p>Funds are directed to a verified relief organization or fund working directly with flood-affected communities in Nepal. Details will be published here and kept current.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How is the money being tracked?<span class="chev">+</span></button><div class="faq-a"><p>Every donation is recorded with a reference ID and payment status, verified server-side against Razorpay. The transparency dashboard above reflects those verified figures.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can I donate anonymously?<span class="chev">+</span></button><div class="faq-a"><p>Yes. You can choose not to display your name publicly at the time of donation.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Will I receive a receipt?<span class="chev">+</span></button><div class="faq-a"><p>Where supported by the payment provider, a receipt with your reference ID will be made available after a successful, verified payment.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can I donate from outside India?<span class="chev">+</span></button><div class="faq-a"><p>This depends on the payment methods enabled for the campaign and applicable regulations. This answer will be finalized once the payment setup is confirmed.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How can I contact Opsiys about this campaign?<span class="chev">+</span></button><div class="faq-a"><p>You can reach the campaign team at the contact email listed in the footer below.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>You don't have to change the world alone.</h2>
+    <p>Sometimes, helping one person starts with something as simple as ₹100.</p>
+    <a href="#donate" class="btn btn-primary">❤️ Help Nepal now</a>
+    <div class="foot-line">If you can help, help. If you can't, share.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h4>OPSIYS FOR NEPAL 🇳🇵</h4><p style="max-width:38ch; color:var(--stone);">A relief campaign by Opsiys supporting communities affected by the recent Nepal floods.</p></div>
+      <div><h4>Campaign</h4><a href="#where-it-goes">Transparency</a><a href="#donate">Donate</a><a href="mailto:campaign@opsiys.com">Contact</a></div>
+      <div><h4>Legal</h4><a href="#">Privacy policy</a><a href="#">Terms &amp; conditions</a><a href="#">Refund / cancellation policy</a><a href="#">Donation disclaimer</a></div>
+    </div>
+    <div class="foot-legal">Opsiys for Nepal is a fundraising initiative operated by Opsiys. Placeholder — replace with the confirmed legal and compliance structure under which this campaign collects and disburses donations, including the registered entity (if any), verified relief partner, and applicable regulatory disclosures for public fundraising in India.</div>
+  </div>
+</footer>
+
+<div class="sticky-bar" id="stickyBar"><a href="#donate" class="btn btn-primary">❤️ Donate now</a></div>
+
+<script>
+  let selectedAmount = null;
+
+  function selectQty(el, grid){
+    grid.querySelectorAll('.qty-card').forEach(c=>c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedAmount = parseInt(el.dataset.amt, 10);
+    document.getElementById('customAmount').value = '';
+    updateSummary();
+  }
+  document.querySelectorAll('#qtyGrid .qty-card').forEach(card=>{
+    card.addEventListener('click', ()=> selectQty(card, document.getElementById('qtyGrid')));
+  });
+  document.getElementById('customAmount').addEventListener('input', (e)=>{
+    document.querySelectorAll('#qtyGrid .qty-card').forEach(c=>c.classList.remove('selected'));
+    const v = parseInt(e.target.value, 10);
+    selectedAmount = (v && v > 0) ? v : null;
+    updateSummary();
+  });
+  document.querySelectorAll('#glanceAmounts .amt-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      document.querySelectorAll('#glanceAmounts .amt-card').forEach(c=>c.classList.remove('selected'));
+      card.classList.add('selected');
+      const amt = card.dataset.amt;
+      document.getElementById('donate').scrollIntoView({behavior:'smooth'});
+      setTimeout(()=>{
+        if(amt === 'custom'){ document.getElementById('customAmount').focus(); }
+        else {
+          const match = document.querySelector('#qtyGrid .qty-card[data-amt="'+amt+'"]');
+          if(match){ selectQty(match, document.getElementById('qtyGrid')); }
+          else { document.getElementById('customAmount').value = amt; selectedAmount = parseInt(amt,10); updateSummary(); }
+        }
+      }, 450);
+    });
+  });
+
+  function updateSummary(){
+    const el = document.getElementById('selectedSummary');
+    el.textContent = selectedAmount ? ('You are contributing ₹' + selectedAmount.toLocaleString('en-IN')) : 'Select an amount to continue';
+    el.style.color = '';
+  }
+
+  function showError(msg){
+    const el = document.getElementById('errorNote');
+    el.textContent = msg;
+    el.classList.add('show');
+  }
+  function clearError(){
+    const el = document.getElementById('errorNote');
+    el.textContent = '';
+    el.classList.remove('show');
+  }
+
+  // ---- real Razorpay flow ----
+  const continueBtn = document.getElementById('continueBtn');
+  continueBtn.addEventListener('click', async ()=>{
+    clearError();
+    if(!selectedAmount || selectedAmount <= 0){
+      showError('Please select or enter an amount first.');
+      return;
+    }
+
+    const name = document.getElementById('donorName').value.trim();
+    const email = document.getElementById('donorEmail').value.trim();
+    const phone = document.getElementById('donorPhone').value.trim();
+    const anonymous = document.getElementById('anonCheck').checked;
+
+    continueBtn.disabled = true;
+    const originalLabel = continueBtn.textContent;
+    continueBtn.textContent = 'Preparing secure checkout…';
+
+    try{
+      const orderRes = await fetch('/api/donations/create-order', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ amount: selectedAmount, name, email, phone, anonymous })
+      });
+      const orderData = await orderRes.json();
+
+      if(!orderRes.ok){
+        throw new Error(orderData.error || 'Could not start the payment.');
+      }
+
+      const options = {
+        key: orderData.keyId,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: 'Opsiys for Nepal',
+        description: 'Flood relief contribution',
+        order_id: orderData.orderId,
+        prefill: { name, email, contact: phone },
+        theme: { color: '#b32338' },
+        handler: async function (response){
+          try{
+            const verifyRes = await fetch('/api/donations/verify', {
+              method: 'POST',
+              headers: {'Content-Type':'application/json'},
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature
+              })
+            });
+            const verifyData = await verifyRes.json();
+            if(verifyData.success){
+              document.getElementById('refId').textContent = verifyData.referenceId;
+              document.getElementById('formView').style.display = 'none';
+              document.getElementById('successPanel').classList.add('show');
+              loadSummary();
+            } else {
+              showError('Payment could not be verified. If money was deducted, contact us with your payment ID.');
+            }
+          } catch(err){
+            showError('Payment succeeded but verification failed to load. Contact us with your payment ID if money was deducted.');
+          }
+        },
+        modal: {
+          ondismiss: function(){
+            continueBtn.disabled = false;
+            continueBtn.textContent = originalLabel;
+          }
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.on('payment.failed', function (response){
+        showError('Payment failed: ' + (response.error && response.error.description ? response.error.description : 'please try again.'));
+        continueBtn.disabled = false;
+        continueBtn.textContent = originalLabel;
+      });
+      rzp.open();
+      continueBtn.disabled = false;
+      continueBtn.textContent = originalLabel;
+    } catch(err){
+      showError(err.message || 'Something went wrong. Please try again.');
+      continueBtn.disabled = false;
+      continueBtn.textContent = originalLabel;
+    }
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    document.getElementById('formView').style.display = 'block';
+    document.getElementById('successPanel').classList.remove('show');
+    selectedAmount = null;
+    document.querySelectorAll('.qty-card').forEach(c=>c.classList.remove('selected'));
+    document.getElementById('customAmount').value = '';
+    updateSummary();
+  });
+
+  // ---- faq accordion ----
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+      if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+
+  // ---- share ----
+  const shareText = "I'm supporting the Opsiys Nepal Relief Drive 🇳🇵. If you can, contribute even a small amount or share this campaign with someone who can help.";
+  const shareUrl = window.location.href;
+  function shareTo(platform){
+    if(platform === 'whatsapp'){ window.open('https://wa.me/?text=' + encodeURIComponent(shareText + ' ' + shareUrl), '_blank'); }
+    else if(platform === 'linkedin'){ window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl), '_blank'); }
+    else if(platform === 'instagram'){ navigator.clipboard.writeText(shareText + ' ' + shareUrl).then(()=>{ alert("Instagram doesn't support direct web sharing — your message has been copied. Paste it into your story or post."); }); }
+    else if(platform === 'copy'){ navigator.clipboard.writeText(shareUrl).then(()=>{ alert('Campaign link copied.'); }); }
+  }
+
+  // ---- sticky mobile bar ----
+  const stickyBar = document.getElementById('stickyBar');
+  const donateSection = document.getElementById('donate');
+  window.addEventListener('scroll', ()=>{
+    const heroBottom = document.querySelector('.hero').getBoundingClientRect().bottom;
+    const donateTop = donateSection.getBoundingClientRect().top;
+    stickyBar.classList.toggle('show', heroBottom < 0 && donateTop > 80);
+  });
+
+  // ---- live transparency data ----
+  function inr(paise){ return '₹' + Math.round(paise/100).toLocaleString('en-IN'); }
+
+  function animateCount(el, target, formatter){
+    const startTime = performance.now();
+    const duration = 800;
+    function tick(now){
+      const p = Math.min((now - startTime) / duration, 1);
+      el.textContent = formatter(Math.floor(p * target));
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  async function loadSummary(){
+    try{
+      const res = await fetch('/api/campaign/summary');
+      const data = await res.json();
+
+      document.getElementById('goalVal').textContent = inr(data.goalPaise);
+      document.getElementById('opsiysVal').textContent = inr(data.opsiysContributionPaise);
+      document.getElementById('commitVal').textContent = inr(data.opsiysContributionPaise);
+
+      animateCount(document.getElementById('raisedVal'), data.raisedPaise, (v)=>inr(v*1));
+      animateCount(document.getElementById('supportersVal'), data.supporters, (v)=>String(v));
+      animateCount(document.getElementById('socialCount'), data.supporters, (v)=>v + (v === 1 ? ' supporter' : ' supporters'));
+
+      const pct = data.goalPaise > 0 ? Math.min(100, (data.raisedPaise / data.goalPaise) * 100) : 0;
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressPct').textContent = pct.toFixed(1) + '% of goal';
+      document.getElementById('progressFraction').textContent = inr(data.raisedPaise) + ' / ' + inr(data.goalPaise);
+
+      document.getElementById('ledgerReceived').textContent = inr(data.raisedPaise);
+      document.getElementById('ledgerOpsiys').textContent = inr(data.opsiysContributionPaise);
+      document.getElementById('ledgerTransferred').textContent = inr(data.transferredPaise);
+      document.getElementById('ledgerCharges').textContent = inr(data.adminChargesPaise);
+      const balance = data.raisedPaise + data.opsiysContributionPaise - data.transferredPaise - data.adminChargesPaise;
+      document.getElementById('ledgerBalance').textContent = inr(Math.max(0, balance));
+
+      const list = document.getElementById('recentList');
+      if(data.recent && data.recent.length){
+        list.innerHTML = data.recent.map(r =>
+          `<div class="recent-row"><span>${r.label}</span><span class="amt">${inr(r.amountPaise)}</span></div>`
+        ).join('');
+      }
+    } catch(err){
+      console.error('Could not load campaign summary', err);
+    }
+  }
+
+  const dashSection = document.getElementById('where-it-goes');
+  let dashLoaded = false;
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !dashLoaded){ dashLoaded = true; loadSummary(); }
+    });
+  }, {threshold:0.3});
+  observer.observe(dashSection);
+  // also load once on page load so header/social numbers aren't stale
+  loadSummary();
+
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('in'); } });
+  }, {threshold:0.2});
+  fadeEls.forEach(el=>fadeObserver.observe(el));
+</script>
+</body>
+</html>
