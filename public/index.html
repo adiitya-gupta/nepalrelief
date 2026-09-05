@@ -221,6 +221,91 @@
 
   .fade-in{opacity:0; transform:translateY(14px); transition:opacity 500ms ease, transform 500ms ease;}
   .fade-in.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:760px){
+    html,body{overflow-x:hidden;}
+    .wrap{width:100%; padding-left:18px; padding-right:18px;}
+    section,.section-tight{padding:72px 0;}
+    .topbar .wrap{padding-top:13px; padding-bottom:13px;}
+    .brand{font-size:17px;}
+    .brand span{font-size:8px; letter-spacing:0.16em; margin-left:3px;}
+    .brand small{font-size:7px; margin-left:4px;}
+    .topnav{gap:8px;}
+    .topnav .raised-pill{padding:8px 10px; font-size:11px;}
+    .topbar .btn-primary{padding:10px 14px; font-size:13px;}
+    .hero{min-height:560px; padding:76px 0 54px; background-size:cover; background-position:center center;}
+    .hero-grid{width:100%; padding-left:18px !important; padding-right:18px;}
+    .hero-copy{max-width:100%;}
+    .eyebrow-flag{font-size:11px; margin-bottom:14px;}
+    .hero h1{font-size:clamp(43px,13vw,62px); line-height:0.96; letter-spacing:-0.06em; max-width:10ch;}
+    .hero-sub{margin-top:24px; font-size:16px; line-height:1.45; max-width:34ch;}
+    .hero-cta{margin-top:28px; gap:10px;}
+    .hero .btn-primary,.hero .btn-ghost{padding:13px 18px; font-size:14px;}
+    .trust-line{margin-top:28px; font-size:12px; gap:7px;}
+    .marquee span{font-size:19px;}
+    .marquee i{font-size:18px;}
+    .statement .wrap{display:block;}
+    .statement h2{font-size:clamp(48px,14vw,68px); max-width:8ch;}
+    .statement p{font-size:16px; margin-top:24px;}
+    .statement p::after{font-size:20px; margin-top:24px;}
+    .statement .wrap::after{display:block; width:100%; height:290px; margin-top:34px; box-shadow:18px 18px 0 -7px #fff, 18px 18px 0 -6px var(--hairline);}
+    .lede{font-size:10px; letter-spacing:0.2em; margin-bottom:18px;}
+    .h2{font-size:clamp(44px,13vw,64px); max-width:10ch;}
+    .feature-grid{gap:14px; margin-top:24px;}
+    .feature-box{border-radius:12px; padding:20px;}
+    .feature-box img{width:calc(100% + 40px); height:180px; margin:-20px -20px 20px;}
+    .feature-box .icon{font-size:24px;}
+    .feature-box h3{font-size:25px;}
+    .feature-box p{font-size:14px;}
+    .impact-layout{gap:38px;}
+    .impact-line .big{font-size:clamp(48px,14vw,72px); max-width:9ch;}
+    .impact-line .small{font-size:16px;}
+    .amount-row{grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin-top:26px !important;}
+    .amt-card{padding:20px 16px;}
+    .amt-card .num{font-size:30px;}
+    .amt-card .lbl{font-size:9px; letter-spacing:0.12em;}
+    .impact-visual{min-height:300px;}
+    .impact-photo.main{height:300px; border-radius:16px;}
+    .donate-layout{display:block;}
+    .donate-intro{padding-top:0;}
+    .donate-intro .h2{font-size:clamp(48px,14vw,70px);}
+    .donate-points{margin-top:28px; font-size:14px;}
+    .donate-block{margin-top:32px !important; padding:20px;}
+    .qty-grid{gap:8px;}
+    .qty-card{padding:15px 8px; font-size:14px;}
+    .donor-fields .row2{grid-template-columns:1fr; gap:14px;}
+    .continue-btn{font-size:14px; padding:15px 10px;}
+    #where-it-goes .wrap{padding-left:18px; padding-right:18px;}
+    .dash{grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:32px;}
+    .dash-cell{padding:20px 14px; min-width:0;}
+    .dash-cell .lbl{font-size:9px; letter-spacing:0.04em;}
+    .dash-cell .val{font-size:28px; overflow-wrap:anywhere;}
+    .ledger{margin-top:36px;}
+    .ledger-row{gap:14px; padding:16px 0; font-size:13px;}
+    .ledger-row .v{text-align:right; overflow-wrap:anywhere;}
+    .commit{padding:22px; gap:28px;}
+    .commit .h2{font-size:clamp(44px,13vw,64px);}
+    .commit-photo{height:280px;}
+    .commit-amt{padding:18px;}
+    .supporters-count{font-size:36px;}
+    .recent-row{gap:12px; padding:13px 14px; font-size:13px;}
+    .share-row{gap:8px;}
+    .share-btn{flex:1 1 45%; padding:10px 12px; font-size:12px; justify-content:center;}
+    .faq-q{font-size:15px; gap:14px;}
+    .final h2{font-size:clamp(42px,12vw,60px);}
+    footer{padding-bottom:100px;}
+    .foot-grid{gap:24px;}
+  }
+
+  @media (max-width:420px){
+    .topnav .raised-pill{display:none;}
+    .brand{font-size:16px;}
+    .hero{min-height:520px;}
+    .hero h1{font-size:clamp(40px,12.5vw,54px);}
+    .hero .btn-primary,.hero .btn-ghost{width:100%; justify-content:center;}
+    .dash-cell .val{font-size:24px;}
+    .amount-row{grid-template-columns:1fr 1fr;}
+  }
 </style>
 </head>
 <body>
