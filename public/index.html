@@ -39,6 +39,7 @@
   .topnav a:hover{color:var(--relief);}
   .raised-pill{border:1px solid #d7d7d7; border-radius:30px; padding:10px 18px; font-size:13px; color:#666; white-space:nowrap;}
   .topbar .btn-primary{border-radius:30px; padding:13px 25px; font-size:16px;}
+  .desktop-view-btn{display:none;}
   .btn{ display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; font-weight:700; font-size:15px; padding:12px 22px; border-radius:var(--radius); transition:transform 120ms ease, background 120ms ease; }
   .btn:active{transform:scale(0.97);} .btn:disabled{opacity:0.6; cursor:not-allowed;}
   .btn-primary{background:var(--relief); color:#fff;} .btn-primary:hover{background:var(--relief-deep);}
@@ -306,6 +307,24 @@
     .dash-cell .val{font-size:24px;}
     .amount-row{grid-template-columns:1fr 1fr;}
   }
+
+  @media (max-width:760px){
+    .desktop-view-btn{display:inline-flex; margin-left:auto; padding:8px 10px; font-size:11px; white-space:nowrap;}
+    body.desktop-mode{min-width:1180px; overflow-x:auto;}
+    body.desktop-mode .topbar{min-width:1180px;}
+    body.desktop-mode .topbar .wrap{padding-left:40px; padding-right:40px;}
+    body.desktop-mode .topnav a{display:inline-flex;}
+    body.desktop-mode .topnav{gap:28px;}
+    body.desktop-mode .hero{min-height:470px; padding:72px 0 58px; background-size:100% 100%, 78% auto; background-position:center, right center;}
+    body.desktop-mode .hero-grid{width:100vw; padding-left:40px !important; padding-right:24px;}
+    body.desktop-mode .hero h1{font-size:clamp(48px,7vw,82px); max-width:760px;}
+    body.desktop-mode .feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+    body.desktop-mode .impact-layout{grid-template-columns:1.2fr 1fr;}
+    body.desktop-mode .donate-layout{display:grid; grid-template-columns:0.95fr 1.05fr; gap:80px;}
+    body.desktop-mode .dash{grid-template-columns:repeat(4,1fr);}
+    body.desktop-mode .commit{grid-template-columns:1.1fr 0.9fr;}
+    body.desktop-mode .desktop-view-btn{display:none;}
+  }
 </style>
 </head>
 <body>
@@ -321,6 +340,7 @@
       <span class="raised-pill">₹250 raised</span>
       <a href="#donate" class="btn btn-primary">♥&nbsp; Donate</a>
     </nav>
+    <button class="desktop-view-btn btn btn-ghost btn-sm" id="desktopViewBtn" type="button">Desktop view</button>
   </div>
 </div>
 
@@ -647,6 +667,15 @@
 <div class="sticky-bar" id="stickyBar"><a href="#donate" class="btn btn-primary">❤️ Donate now</a></div>
 
 <script>
+  const desktopViewBtn = document.getElementById('desktopViewBtn');
+  if(localStorage.getItem('opsiys-display-mode') === 'desktop'){
+    document.body.classList.add('desktop-mode');
+  }
+  desktopViewBtn.addEventListener('click', ()=>{
+    document.body.classList.add('desktop-mode');
+    localStorage.setItem('opsiys-display-mode', 'desktop');
+  });
+
   let selectedAmount = null;
 
   function selectQty(el, grid){
